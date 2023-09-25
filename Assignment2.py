@@ -1,13 +1,13 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D  # Import Axes3D from mpl_toolkits.mplot3d
 from matplotlib.ticker import FuncFormatter
 
-# I extracted the URL of a dataset that I uploaded in Github repository
-dataset_url = "https://raw.githubusercontent.com/Houssem-Chbcihib/Assignment2/main/Coronavirus_Tunisia.csv"
-# Load the dataset from the URL
-df = pd.read_csv(dataset_url)
+# Define a function to load data from a URL
+@st.cache
+def load_data(url):
+    df = pd.read_csv(url)
+    return df
 
 # Streamlit Sidebar Widgets
 st.sidebar.title("COVID-19 Data Visualization")
@@ -15,6 +15,10 @@ chart_type = st.sidebar.selectbox("Select Chart Type", ["3D Scatter Plot", "Line
 
 # Main content
 st.title("COVID-19 Data Visualization App")
+
+# Load the dataset from a URL
+dataset_url = "https://raw.githubusercontent.com/Houssem-Chbcihib/Assignment2/main/Coronavirus_Tunisia.csv"
+df = load_data(dataset_url)
 
 if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")

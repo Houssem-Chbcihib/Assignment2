@@ -22,6 +22,9 @@ st.sidebar.image("https://www.amnesty.ie/wp-content/uploads/2020/04/www.amnesty.
 # Main content
 st.title("COVID-19 Data Visualization App")
 
+#Disable Python Notification
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")
 

@@ -13,6 +13,9 @@ df = pd.read_csv(dataset_url)
 st.sidebar.title("COVID-19 Data Visualization")
 chart_type = st.sidebar.selectbox("Select Chart Type", ["3D Scatter Plot", "Line Chart"])
 
+# Insert the image in the sidebar
+st.sidebar.image("https://fesi-sport.org/wp-content/uploads/2020/03/COVID-19.png", use_column_width=True)
+
 # Main content
 st.title("COVID-19 Data Visualization App")
 

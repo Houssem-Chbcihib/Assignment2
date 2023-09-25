@@ -68,18 +68,18 @@ elif chart_type == "Line Chart":
     selected_data = st.multiselect("Select Data Series", ["Cases", "Deaths"], default=["Cases", "Deaths"])
 
     if selected_data:
-        plt.figure(figsize=(12, 6))
-        plt.xlabel('Month')
-        plt.ylabel('Count')
-        plt.title('Monthly COVID-19 Data in Tunisia (2020)')
-        plt.grid(True)
+        fig, ax = plt.subplots(figsize=(12, 6))
+        ax.set_xlabel('Month')
+        ax.set_ylabel('Count')
+        ax.set_title('Monthly COVID-19 Data in Tunisia (2020)')
+        ax.grid(True)
 
         for data_series in selected_data:
             if data_series == "Cases":
-                plt.plot(monthly_data.index, monthly_data['cases'], label='Cases', marker='o')
+                ax.plot(monthly_data.index, monthly_data['cases'], label='Cases', marker='o')
             elif data_series == "Deaths":
-                plt.plot(monthly_data.index, monthly_data['deaths'], label='Deaths', marker='o')
+                ax.plot(monthly_data.index, monthly_data['deaths'], label='Deaths', marker='o')
 
-        plt.legend()
-        plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
-        st.pyplot()
+        ax.legend()
+        ax.yaxis.set_major_formatter(FuncFormatter(lambda val, _: int(val)))
+        st.pyplot(fig)

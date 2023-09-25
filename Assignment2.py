@@ -66,18 +66,18 @@ elif chart_type == "Line Chart":
 
     if "Cases" in selected_data:
         st.subheader("Cases")
+        monthly_data_cases = df.groupby('month')['cases'].sum().tolist()
     if "Deaths" in selected_data:
         st.subheader("Deaths")
+        monthly_data_deaths = df.groupby('month')['deaths'].sum().tolist()
 
     plt.figure(figsize=(12, 6))
 
     if "Cases" in selected_data:
-        monthly_data_cases = df.groupby('month')['cases'].sum()
-        plt.plot(monthly_data_cases.index, monthly_data_cases, label='Cases', marker='o', color='blue')
+        plt.plot(df['month'].unique(), monthly_data_cases, label='Cases', marker='o', color='blue')
 
     if "Deaths" in selected_data:
-        monthly_data_deaths = df.groupby('month')['deaths'].sum()
-        plt.plot(monthly_data_deaths.index, monthly_data_deaths, label='Deaths', marker='o', color='red')
+        plt.plot(df['month'].unique(), monthly_data_deaths, label='Deaths', marker='o', color='red')
 
     plt.xlabel('Month')
     plt.ylabel('Count')

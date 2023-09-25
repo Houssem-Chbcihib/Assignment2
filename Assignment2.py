@@ -20,7 +20,7 @@ if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")
 
     # Create a filter for data points with cases above or equal to a certain threshold
-    threshold = st.slider("Select a Cases Threshold", min_value=0, max_value=10000, value=0)
+    threshold = st.slider("Select a Cases Threshold", min_value=0, max_value=5000, value=0)
     filtered_data = df[df['cases'] >= threshold]
 
     # Create a 3D scatter plot using Matplotlib

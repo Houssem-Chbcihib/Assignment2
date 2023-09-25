@@ -58,7 +58,6 @@ if chart_type == "3D Scatter Plot":
     # Show the 3D scatter plot
     st.pyplot(fig)
 
-
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
 
@@ -68,18 +67,11 @@ elif chart_type == "Line Chart":
     selected_data = st.multiselect("Select Data Series", ["Cases", "Deaths"], default=["Cases", "Deaths"])
 
     if selected_data:
-        fig, ax = plt.subplots(figsize=(12, 6))
-        ax.set_xlabel('Month')
-        ax.set_ylabel('Count')
-        ax.set_title('Monthly COVID-19 Data in Tunisia (2020)')
-        ax.grid(True)
-
         for data_series in selected_data:
             if data_series == "Cases":
-                ax.plot(monthly_data.index, monthly_data['cases'], label='Cases', marker='o')
-            elif data_series == "Deaths":
-                ax.plot(monthly_data.index, monthly_data['deaths'], label='Deaths', marker='o')
+                st.subheader("Cases")
+                st.line_chart(monthly_data['cases'])
 
-        ax.legend()
-        ax.yaxis.set_major_formatter(FuncFormatter(lambda val, _: int(val)))
-        st.pyplot(fig)
+            elif data_series == "Deaths":
+                st.subheader("Deaths")
+                st.line_chart(monthly_data['deaths'])

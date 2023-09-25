@@ -61,25 +61,23 @@ if chart_type == "3D Scatter Plot":
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
 
-    monthly_data = df.groupby('month')[['cases', 'deaths']].sum()
-
     # Allow users to select which data series to display
     selected_data = st.multiselect("Select Data Series", ["Cases", "Deaths"], default=["Cases", "Deaths"])
 
     if "Cases" in selected_data:
         st.subheader("Cases")
-        plt.figure(figsize=(12, 6))
-        plt.plot(monthly_data.index, monthly_data['cases'], label='Cases', marker='o', color='blue')
-    
     if "Deaths" in selected_data:
         st.subheader("Deaths")
-        if "Cases" in selected_data:
-            # If both Cases and Deaths are selected, use the same figure for both
-            plt.plot(monthly_data.index, monthly_data['deaths'], label='Deaths', marker='o', color='red')
-        else:
-            # If only Deaths is selected, create a new figure
-            plt.figure(figsize=(12, 6))
-            plt.plot(monthly_data.index, monthly_data['deaths'], label='Deaths', marker='o', color='red')
+
+    plt.figure(figsize=(12, 6))
+
+    if "Cases" in selected_data:
+        monthly_data_cases = df.groupby('month')['cases'].sum()
+        plt.plot(monthly_data_cases.index, monthly_data_cases, label='Cases', marker='o', color='blue')
+
+    if "Deaths" in selected_data:
+        monthly_data_deaths = df.groupby('month')['deaths'].sum()
+        plt.plot(monthly_data_deaths.index, monthly_data_deaths, label='Deaths', marker='o', color='red')
 
     plt.xlabel('Month')
     plt.ylabel('Count')

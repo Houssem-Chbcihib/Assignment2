@@ -4,9 +4,10 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D  # Import Axes3D from mpl_toolkits.mplot3d
 from matplotlib.ticker import FuncFormatter
 
-# Load the dataset
-file_path = "/Users/Houssem/Desktop/Coronavirus_Tunisia.csv"  # Update with your file path
-df = pd.read_csv(file_path)
+# Replace this URL with the raw content URL of your dataset on GitHub
+dataset_url = "https://raw.githubusercontent.com/Houssem-Chbcihib/Assignment2/main/Coronavirus_Tunisia.csv"
+# Load the dataset from the URL
+df = pd.read_csv(dataset_url)
 
 # Streamlit Sidebar Widgets
 st.sidebar.title("COVID-19 Data Visualization")

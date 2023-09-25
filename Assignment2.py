@@ -61,30 +61,24 @@ if chart_type == "3D Scatter Plot":
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
 
-    # Group the data by month to get monthly totals
     monthly_data = df.groupby('month')[['cases', 'deaths']].sum()
 
-    # Allow users to select which data series to display
-    selected_data = st.multiselect("Select Data Series", ["Cases", "Deaths"], default=["Cases"])
+    # Convert the index to a list
+    x_values = monthly_data.index.tolist()
+    
+    # Convert the 'cases' and 'deaths' columns to lists
+    y_values_cases = monthly_data['cases'].tolist()
+    y_values_deaths = monthly_data['deaths'].tolist()
 
-    # Create a line chart for the selected data series
+    # Create a line chart for monthly cases and deaths
     plt.figure(figsize=(12, 6))
-
-    if "Cases" in selected_data:
-        plt.plot(monthly_data.index, monthly_data['cases'], label='Cases', marker='o')
-
-    if "Deaths" in selected_data:
-        plt.plot(monthly_data.index, monthly_data['deaths'], label='Deaths', marker='o', color='red')
-
+    plt.plot(x_values, y_values_cases, label='Cases', marker='o')
+    plt.plot(x_values, y_values_deaths, label='Deaths', marker='o', color='red')
     plt.xlabel('Month')
     plt.ylabel('Count')
-    plt.title('Monthly COVID-19 Data in Tunisia (2020)')
+    plt.title('Monthly COVID-19 Cases and Deaths in Tunisia (2020)')
     plt.legend()
     plt.grid(True)
+
+    # Format the y-axis label as an integer
     plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
-    st.pyplot()
-    plt.title('Monthly COVID-19 Data in Tunisia (2020)')
-    plt.legend()
-    plt.grid(True)
-    plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
-    st.pyplot()

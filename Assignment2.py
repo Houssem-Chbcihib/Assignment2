@@ -5,7 +5,7 @@ from mpl_toolkits.mplot3d import Axes3D  # Import Axes3D from mpl_toolkits.mplot
 from matplotlib.ticker import FuncFormatter
 
 # I extracted the URL of a dataset that I uploaded in Github repository
-dataset_url = "https://github.com/Houssem-Chbcihib/Assignment2/blob/main/Coronavirus_Tunisia.csv"
+dataset_url = "https://raw.githubusercontent.com/Houssem-Chbcihib/Assignment2/main/Coronavirus_Tunisia.csv"
 # Load the dataset from the URL
 df = pd.read_csv(dataset_url)
 

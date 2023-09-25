@@ -73,7 +73,7 @@ elif chart_type == "Line Chart":
     # Create a line chart for monthly cases and deaths
     plt.figure(figsize=(12, 6))
     plt.plot(x_values, y_values_cases, label='Cases', marker='o')
-    plt.plot(x_values, y_values_deaths, label='Deaths', marker='o', color='red')
+    plt.plot(x_values, y_values_deaths, label='Deaths', marker='o')
     plt.xlabel('Month')
     plt.ylabel('Count')
     plt.title('Monthly COVID-19 Cases and Deaths in Tunisia (2020)')
@@ -82,3 +82,6 @@ elif chart_type == "Line Chart":
 
     # Format the y-axis label as an integer
     plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
+
+    # Show the line chart
+    st.pyplot()

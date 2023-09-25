@@ -63,10 +63,13 @@ elif chart_type == "Line Chart":
 
     monthly_data = df.groupby('month')[['cases', 'deaths']].sum()
 
+    # Convert the index to a list
+    x_values = monthly_data.index.tolist()
+
     # Create a line chart for monthly cases and deaths
     plt.figure(figsize=(12, 6))
-    plt.plot(monthly_data.index, monthly_data['cases'], label='Cases', marker='o')
-    plt.plot(monthly_data.index, monthly_data['deaths'], label='Deaths', marker='o')
+    plt.plot(x_values, monthly_data['cases'], label='Cases', marker='o')
+    plt.plot(x_values, monthly_data['deaths'], label='Deaths', marker='o')
     plt.xlabel('Month')
     plt.ylabel('Count')
     plt.title('Monthly COVID-19 Cases and Deaths in Tunisia (2020)')
@@ -78,3 +81,4 @@ elif chart_type == "Line Chart":
 
     # Show the line chart
     st.pyplot()
+

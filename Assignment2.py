@@ -61,30 +61,34 @@ if chart_type == "3D Scatter Plot":
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
 
-    # Allow users to select which data series to display
-    selected_data = st.multiselect("Select Data Series", ["Cases", "Deaths"], default=["Cases"])
+    monthly_data = df.groupby('month')[['cases', 'deaths']].sum()
 
-    # Filter the data based on the user's selection
-    if "Cases" in selected_data:
-        st.subheader("Cases")
-        plt.figure(figsize=(12, 6))
-        plt.plot(monthly_data.index, monthly_data['cases'], label='Cases', marker='o')
-        plt.xlabel('Month')
-        plt.ylabel('Count')
-        plt.title('Monthly COVID-19 Cases in Tunisia (2020)')
-        plt.legend()
-        plt.grid(True)
-        plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
-        st.pyplot()
+    # Allow users to select a date range using a slider
+    start_month, end_month = st.slider("Select Date Range", 
+                                       min_value=monthly_data.index.min(), 
+                                       max_value=monthly_data.index.max(), 
+                                       value=(monthly_data.index.min(), monthly_data.index.max()))
 
-    if "Deaths" in selected_data:
-        st.subheader("Deaths")
-        plt.figure(figsize=(12, 6))
-        plt.plot(monthly_data.index, monthly_data['deaths'], label='Deaths', marker='o', color='red')
-        plt.xlabel('Month')
-        plt.ylabel('Count')
-        plt.title('Monthly COVID-19 Deaths in Tunisia (2020)')
-        plt.legend()
-        plt.grid(True)
-        plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
-        st.pyplot()
+    # Filter the data based on the selected date range
+    filtered_data = monthly_data[(monthly_data.index >= start_month) & (monthly_data.index <= end_month)]
+
+    # Convert the index and columns to lists
+    x_values = filtered_data.index.tolist()
+    y_values_cases = filtered_data['cases'].tolist()
+    y_values_deaths = filtered_data['deaths'].tolist()
+
+    # Create a line chart for monthly cases and deaths
+    plt.figure(figsize=(12, 6))
+    plt.plot(x_values, y_values_cases, label='Cases', marker='o')
+    plt.plot(x_values, y_values_deaths, label='Deaths', marker='o')
+    plt.xlabel('Month')
+    plt.ylabel('Count')
+    plt.title(f'Monthly COVID-19 Cases and Deaths in Tunisia (2020) ({start_month} to {end_month})')
+    plt.legend()
+    plt.grid(True)
+
+    # Format the y-axis label as an integer
+    plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
+
+    # Show the line chart
+    st.pyplot()

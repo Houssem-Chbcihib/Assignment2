@@ -1,13 +1,12 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D  # Import Axes3D from mpl_toolkits.mplot3d
 from matplotlib.ticker import FuncFormatter
 
-# Define a function to load data from a URL
-@st.cache
-def load_data(url):
-    df = pd.read_csv(url)
-    return df
+# Load the dataset
+file_path = "/Users/Houssem/Desktop/Coronavirus_Tunisia.csv"  # Update with your file path
+df = pd.read_csv(file_path)
 
 # Streamlit Sidebar Widgets
 st.sidebar.title("COVID-19 Data Visualization")
@@ -16,50 +15,46 @@ chart_type = st.sidebar.selectbox("Select Chart Type", ["3D Scatter Plot", "Line
 # Main content
 st.title("COVID-19 Data Visualization App")
 
-# Load the dataset from a URL
-dataset_url = "https://raw.githubusercontent.com/Houssem-Chbcihib/Assignment2/main/Coronavirus_Tunisia.csv"
-df = load_data(dataset_url)
-
 if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")
 
-    # Create a filter for data points with cases above or equal to a certain threshold
-    threshold = st.slider("Select a Cases Threshold", min_value=0, max_value=10000, value=500)
+    # Creating a filter for data points with cases above or equal to a certain threshold
+    threshold = st.slider("Select a Cases Threshold", min_value=0, max_value=5000, value=0)
     filtered_data = df[df['cases'] >= threshold]
 
-    # Create a 3D scatter plot using Matplotlib
+    # Creating a 3D scatter plot using Matplotlib
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
 
-    # Extract data
+    # Extracting data
     x = filtered_data['month']
     y = filtered_data['day']
     z = filtered_data['cases']
 
-    # Create the scatter plot
+    # Creating the scatter plot
     scatter = ax.scatter(x, y, z, c=z, cmap='viridis', marker='o', s=50)
 
-    # Add labels and title
+    # Adding labels and title
     ax.set_xlabel('Month')
     ax.set_ylabel('Day')
     ax.set_zlabel('Cases')
     ax.set_title(f'3D Scatter Plot of COVID-19 Cases in Tunisia (2020) (Cases >= {threshold})')
 
-    # Create a color scale legend
+    # Creating a color scale legend
     cbar = fig.colorbar(scatter, ax=ax)
     cbar.set_label('Cases', rotation=270, labelpad=20)
 
-    # Format axis labels as integers
+    # Formating axis labels as integers
     ax.xaxis.set_major_formatter(FuncFormatter(lambda val, _: int(val)))
     ax.yaxis.set_major_formatter(FuncFormatter(lambda val, _: int(val)))
     ax.zaxis.set_major_formatter(FuncFormatter(lambda val, _: int(val)))
 
-    # Set fixed limits for axes to prevent zooming in
+    # Setting fixed limits for axes to prevent zooming in
     ax.set_xlim(left=df['month'].min(), right=df['month'].max())
     ax.set_ylim(bottom=df['day'].min(), top=df['day'].max())
     ax.set_zlim(bottom=df['cases'].min(), top=df['cases'].max())
 
-    # Show the 3D scatter plot
+    # Showing the 3D scatter plot
     st.pyplot(fig)
 
 elif chart_type == "Line Chart":
@@ -67,7 +62,7 @@ elif chart_type == "Line Chart":
 
     monthly_data = df.groupby('month')[['cases', 'deaths']].sum()
 
-    # Create a line chart for monthly cases and deaths
+    # Creating a line chart for monthly cases and deaths
     plt.figure(figsize=(12, 6))
     plt.plot(monthly_data.index, monthly_data['cases'], label='Cases', marker='o')
     plt.plot(monthly_data.index, monthly_data['deaths'], label='Deaths', marker='o')
@@ -77,8 +72,8 @@ elif chart_type == "Line Chart":
     plt.legend()
     plt.grid(True)
 
-    # Format the y-axis label as an integer
+    # Formatting the y-axis label as an integer
     plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
 
-    # Show the line chart
+    # Showing the line chart
     st.pyplot()

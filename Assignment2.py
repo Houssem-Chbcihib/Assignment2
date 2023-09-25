@@ -61,6 +61,9 @@ if chart_type == "3D Scatter Plot":
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
 
+    # Group the data by month to get monthly totals
+    monthly_data = df.groupby('month')[['cases', 'deaths']].sum()
+
     # Allow users to select which data series to display
     selected_data = st.multiselect("Select Data Series", ["Cases", "Deaths"], default=["Cases"])
 
@@ -75,6 +78,11 @@ elif chart_type == "Line Chart":
 
     plt.xlabel('Month')
     plt.ylabel('Count')
+    plt.title('Monthly COVID-19 Data in Tunisia (2020)')
+    plt.legend()
+    plt.grid(True)
+    plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
+    st.pyplot()
     plt.title('Monthly COVID-19 Data in Tunisia (2020)')
     plt.legend()
     plt.grid(True)

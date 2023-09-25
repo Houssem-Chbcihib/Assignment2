@@ -1,10 +1,9 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D  # Import Axes3D from mpl_toolkits.mplot3d
 from matplotlib.ticker import FuncFormatter
 
-# Replace this URL with the raw content URL of your dataset on GitHub
+# I extracted the URL of a dataset that I uploaded in Github repository
 dataset_url = "https://raw.githubusercontent.com/Houssem-Chbcihib/Assignment2/main/Coronavirus_Tunisia.csv"
 # Load the dataset from the URL
 df = pd.read_csv(dataset_url)
@@ -78,3 +77,4 @@ elif chart_type == "Line Chart":
 
     # Show the line chart
     st.pyplot()
+

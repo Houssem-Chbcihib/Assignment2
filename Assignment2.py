@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D  # Import Axes3D from mpl_toolkits.mplot3d
 from matplotlib.ticker import FuncFormatter
 
 # I extracted the URL of a dataset that I uploaded in Github repository
@@ -77,4 +78,3 @@ elif chart_type == "Line Chart":
 
     # Show the line chart
     st.pyplot()
-

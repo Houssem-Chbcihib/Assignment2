@@ -65,10 +65,13 @@ elif chart_type == "Line Chart":
 
     # Convert the index to a list
     x_values = monthly_data.index.tolist()
+    
+    # Convert the 'cases' column to a list
+    y_values_cases = monthly_data['cases'].tolist()
 
     # Create a line chart for monthly cases and deaths
     plt.figure(figsize=(12, 6))
-    plt.plot(x_values, monthly_data['cases'], label='Cases', marker='o')
+    plt.plot(x_values, y_values_cases, label='Cases', marker='o')
     plt.plot(x_values, monthly_data['deaths'], label='Deaths', marker='o')
     plt.xlabel('Month')
     plt.ylabel('Count')
@@ -81,4 +84,3 @@ elif chart_type == "Line Chart":
 
     # Show the line chart
     st.pyplot()
-

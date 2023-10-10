@@ -70,7 +70,7 @@ if chart_type == "3D Scatter Plot":
     st.write("This 3D scatter plot shows the distribution of COVID-19 cases in Tunisia in 2020.")
     st.write("The color scale represents the number of cases, with green indicating lower cased red indicating higher cases.")
     st.write("Til Month 8, Daily cases having be mostly constant(The dots appear to form horizontal lines on the 3D graph)")
-    st.write("We can see a noticeable increase in cases from month 8 onwards, possibly due to tje gradual lockdown that the Tunsiian goverment initiated in May 2020.")
+    st.write("We can see a noticeable increase in cases from month 8 onwards, possibly due to the gradual lockdown that the Tunsiian goverment initiated in May 2020.")
 
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")

@@ -65,8 +65,11 @@ if chart_type == "3D Scatter Plot":
     # Show the 3D scatter plot using st.plotly_chart
     st.plotly_chart(fig)
 
-    # Text under the graph
-    st.write("We can see that the daily cases up until month 8 were constant, but it started increasing and varying. This has to do with the gradual lift of the lockdown that happened around May in Tunisia.")
+    # Text under the 3D Scatter Plot
+    st.markdown("**Description**:")
+    st.write("This 3D scatter plot shows the distribution of COVID-19 cases in Tunisia in 2020.")
+    st.write("The color scale represents the number of cases, with red indicating higher cases.")
+    st.write("We can see a noticeable increase in cases from month 8 onwards, possibly due to changes in policies or public behavior.")
 
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
@@ -94,7 +97,12 @@ elif chart_type == "Line Chart":
     plt.title('Monthly COVID-19 Cases and Deaths in Tunisia (2020)')
     plt.legend()
     plt.grid(True)
-    plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val))
+    plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
 
-    # Text under the graph
-    st.write("You can add descriptive text under the Line Chart.")
+    st.pyplot()
+
+    # Text under the Line Chart
+    st.markdown("**Description**:")
+    st.write("This line chart displays the monthly count of COVID-19 cases and deaths in Tunisia for the year 2020.")
+    st.write("Users can select specific data series (Cases, Deaths) to visualize.")
+    st.write("The chart provides insights into the trends of cases and deaths over time.")

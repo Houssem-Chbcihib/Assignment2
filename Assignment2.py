@@ -68,7 +68,7 @@ if chart_type == "3D Scatter Plot":
     )
 
     # Increase the size of the figure
-    fig.update_layout(height=800, width=1000)
+    fig.update_layout(height=600, width=600)
 
     # Show the 3D scatter plot using st.plotly_chart
     st.plotly_chart(fig)

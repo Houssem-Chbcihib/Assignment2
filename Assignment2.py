@@ -28,7 +28,6 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 
-
 if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")
 
@@ -63,15 +62,17 @@ if chart_type == "3D Scatter Plot":
         coloraxis_colorbar=dict(
             title='<b>Cases</b>',  # Bold title for color scale
             titlefont=dict(color='black'),  # Black color for the title
-            tickfont=dict(color='black')    # Black color for color scale numbers
+            tickfont=dict(color='black'),  # Black color for color scale numbers
+            tickvals=[df['cases'].min(), df['cases'].max()],  # Define tick values for the color scale
         )
     )
 
     # Increase the size of the figure
-    fig.update_layout(height=600, width=800)
+    fig.update_layout(height=500, width=600)
 
     # Show the 3D scatter plot using st.plotly_chart
     st.plotly_chart(fig)
+
 
 
 

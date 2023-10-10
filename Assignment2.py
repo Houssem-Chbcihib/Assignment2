@@ -49,6 +49,9 @@ if chart_type == "3D Scatter Plot":
             yaxis_title='<b>Day</b>',    # Bold title for Y-axis
             zaxis_title='<b>Cases</b>',  # Bold title for Z-axis
             bgcolor='white',  # Set background color to white
+            xaxis=dict(title=dict(text='Month', font=dict(color='black')), tickfont=dict(color='black')),  # Black title and numbers for X-axis
+            yaxis=dict(title=dict(text='Day', font=dict(color='black')), tickfont=dict(color='black')),    # Black title and numbers for Y-axis
+            zaxis=dict(title=dict(text='Cases', font=dict(color='black')), tickfont=dict(color='black'))    # Black title and numbers for Z-axis
         ),
         coloraxis=dict(
             colorscale='RdYlGn_r',  # Use the reversed RdYlGn color scale (green to red)

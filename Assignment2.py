@@ -67,9 +67,9 @@ if chart_type == "3D Scatter Plot":
 
     # Text under the 3D Scatter Plot
     st.markdown("### <u>Description:</u>", unsafe_allow_html=True)
-    st.markdown("This 3D scatter plot displays the distribution of COVID-19 cases in Tunisia in 2020.", unsafe_allow_html=True)
+    st.markdown("This 3D scatter plot displays the distribution of COVID-19 cases in Tunisia in 2020. you can manipulate the graph by choosing data to observe using the filter above. For example, if you choose a value of 4000, the graph will only plot data points with corresponding cases equal or higher than 5000", unsafe_allow_html=True)
     st.markdown("The color scale represents the number of cases, with <span style='color: green;'>green</span> indicating lower cases and <span style='color: red;'>red</span> indicating higher cases.", unsafe_allow_html=True)
-    st.markdown("We can observe a noticeable increase in cases from month 8 onwards, possibly due to changes in policies or public behavior.", unsafe_allow_html=True)
+    st.markdown("We can observe a noticeable increase in cases from month 8 onwards. Before that, we can see horizontal lines indicating that the daily recorded cases are somewhat constant. This might be due to the Tunisian goverment decision to initiate gradual lifting of lockdown.", unsafe_allow_html=True)
 
 
 elif chart_type == "Line Chart":
@@ -106,6 +106,6 @@ elif chart_type == "Line Chart":
     st.markdown("### <u>Description:</u>", unsafe_allow_html=True)
     st.markdown("This line chart illustrates the monthly count of COVID-19 cases and deaths in Tunisia for the year 2020.", unsafe_allow_html=True)
     st.markdown("Users can select specific data series (<span style='color: blue;'>Cases</span>, <span style='color: red;'>Deaths</span>) to visualize.", unsafe_allow_html=True)
-    st.markdown("The chart provides insights into the trends of cases and deaths over time.", unsafe_allow_html=True)
+    st.markdown("The chart provides insights into the trends of cases and deaths over time, as it allows the user to see the deaths and cases lines independently, and then visualize both and be able to contrast them to observe the differences in recorded cases and deaths.", unsafe_allow_html=True)
 
 

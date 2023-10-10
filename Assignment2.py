@@ -27,7 +27,6 @@ st.title("COVID-19 Data Visualization App")
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
-
 if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")
 
@@ -46,20 +45,18 @@ if chart_type == "3D Scatter Plot":
     # Customize the figure's appearance
     fig.update_layout(
         scene=dict(
-            xaxis_title='<b>Month</b>',  # Bold title for X-axis
-            yaxis_title='<b>Day</b>',    # Bold title for Y-axis
-            zaxis_title='<b>Cases</b>',  # Bold title for Z-axis
-            bgcolor='white'  # Set background color to white
+            xaxis_title='Month',
+            yaxis_title='Day',
+            zaxis_title='Cases',
+            bgcolor='white',  # Set background color to white
+            xaxis=dict(title=dict(text='Month', font=dict(color='black'))),  # Black title for X-axis
+            yaxis=dict(title=dict(text='Day', font=dict(color='black'))),    # Black title for Y-axis
+            zaxis=dict(title=dict(text='Cases', font=dict(color='black')))    # Black title for Z-axis
         ),
         coloraxis=dict(
-            colorscale='YlGnRd',  # Use the YlGnRd color scale (green to red)
+            colorscale='RdYlGn',  # Use the RdYlGn color scale (green to red)
             cmin=df['cases'].min(),  # Set the minimum value for color mapping
             cmax=df['cases'].max()   # Set the maximum value for color mapping
-        ),
-        coloraxis_colorbar=dict(
-            title='<b>Cases</b>',  # Bold title for color scale
-            titlefont=dict(color='black'),  # Black color for the title
-            tickfont=dict(color='black')    # Black color for color scale numbers
         )
     )
 

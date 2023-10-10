@@ -58,14 +58,12 @@ if chart_type == "3D Scatter Plot":
             colorscale='RdYlGn_r',  # Use the reversed RdYlGn color scale (green to red)
             cmin=df['cases'].min(),  # Set the minimum value for color mapping
             cmax=df['cases'].max()   # Set the maximum value for color mapping
-        ),
-        coloraxis_colorbar=dict(
-            title='<b>Cases</b>',  # Bold title for color scale
-            titlefont=dict(color='black'),  # Black color for the title
-            tickvals=[df['cases'].min(), df['cases'].max()],  # Define tick values for the color scale
-            ticktext=[str(df['cases'].min()), str(df['cases'].max())]  # Define corresponding tick labels
         )
     )
+
+    # Create a separate legend indicating the color scale and values
+    color_legend = [df['cases'].min(), (df['cases'].min() + df['cases'].max()) / 2, df['cases'].max()]
+    st.write("Color Scale: ", color_legend)
 
     # Increase the size of the figure
     fig.update_layout(height=500, width=600)

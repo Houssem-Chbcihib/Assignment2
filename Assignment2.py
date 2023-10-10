@@ -68,8 +68,9 @@ if chart_type == "3D Scatter Plot":
     # Text under the 3D Scatter Plot
     st.markdown("**Description**:")
     st.write("This 3D scatter plot shows the distribution of COVID-19 cases in Tunisia in 2020.")
-    st.write("The color scale represents the number of cases, with red indicating higher cases.")
-    st.write("We can see a noticeable increase in cases from month 8 onwards, possibly due to changes in policies or public behavior.")
+    st.write("The color scale represents the number of cases, with green indicating lower cased red indicating higher cases.")
+    st.write("Til Month 8, Daily cases having be mostly constant(The dots appear to form horizontal lines on the 3D graph)")
+    st.write("We can see a noticeable increase in cases from month 8 onwards, possibly due to tje gradual lockdown that the Tunsiian goverment initiated in May 2020.")
 
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
@@ -105,4 +106,4 @@ elif chart_type == "Line Chart":
     st.markdown("**Description**:")
     st.write("This line chart displays the monthly count of COVID-19 cases and deaths in Tunisia for the year 2020.")
     st.write("Users can select specific data series (Cases, Deaths) to visualize.")
-    st.write("The chart provides insights into the trends of cases and deaths over time.")
+    st.write("The chart provides insights into the trends of cases and deaths over time. It gives an understanding how cases and deaths evolved, and it generates insight for the user and it allows them to observe the two lines independently and then contrast them")

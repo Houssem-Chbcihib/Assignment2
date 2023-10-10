@@ -62,8 +62,8 @@ if chart_type == "3D Scatter Plot":
         coloraxis_colorbar=dict(
             title='<b>Cases</b>',  # Bold title for color scale
             titlefont=dict(color='black'),  # Black color for the title
-            tickfont=dict(color='black'),  # Black color for color scale numbers
             tickvals=[df['cases'].min(), df['cases'].max()],  # Define tick values for the color scale
+            ticktext=[str(df['cases'].min()), str(df['cases'].max())]  # Define corresponding tick labels
         )
     )
 

@@ -27,6 +27,8 @@ st.title("COVID-19 Data Visualization App")
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
+
+
 if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")
 
@@ -70,6 +72,8 @@ if chart_type == "3D Scatter Plot":
 
     # Show the 3D scatter plot using st.plotly_chart
     st.plotly_chart(fig)
+
+
 
 
 

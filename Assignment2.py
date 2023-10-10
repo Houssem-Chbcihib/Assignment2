@@ -23,6 +23,31 @@ st.title("COVID-19 Data Visualization App")
 # Disable Python Notification
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import plotly.express as px
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.ticker import FuncFormatter
+
+# Load the dataset from the URL
+dataset_url = "https://raw.githubusercontent.com/Houssem-Chbcihib/Assignment2/main/Coronavirus_Tunisia.csv"
+df = pd.read_csv(dataset_url)
+
+# Streamlit Sidebar Widgets
+st.sidebar.title("COVID-19 Data Visualization")
+chart_type = st.sidebar.selectbox("Select Chart Type", ["3D Scatter Plot", "Line Chart"])
+
+# Insert images in the sidebar
+st.sidebar.image("https://www.worldbank.org/content/dam/photos/780x439/2017/apr-4/Tunisia-COVID19-780.jpg", use_column_width=True)
+st.sidebar.image("https://www.amnesty.ie/wp-content/uploads/2020/04/www.amnesty.org180tunis02gettyimages-1209367433.jpg", use_column_width=True)
+
+# Main content
+st.title("COVID-19 Data Visualization App")
+
+# Disable Python Notification
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")
 

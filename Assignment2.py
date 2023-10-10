@@ -32,7 +32,7 @@ if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")
 
     # Create a filter for data points with cases above or equal to a certain threshold
-    threshold = st.slider("Select a Cases Threshold", min_value=0, max_value=5000, value=0)
+    threshold = st.slider("Select a Cases Threshold", min_value=0, max_value=6000, value=0)
     filtered_data = df[df['cases'] >= threshold]
 
     # Create an interactive 3D scatter plot using Plotly Express with custom settings
@@ -56,22 +56,13 @@ if chart_type == "3D Scatter Plot":
         ),
         coloraxis=dict(
             colorscale='RdYlGn_r',  # Use the reversed RdYlGn color scale (green to red)
-            cmin=df['cases'].min(),  # Set the minimum value for color mapping
-            cmax=df['cases'].max()   # Set the maximum value for color mapping
+            cmin=0,  # Set the minimum value for color mapping
+            cmax=6000   # Set the maximum value for color mapping
         )
     )
 
-    # Create a separate legend indicating the color scale and values
-    color_legend = [df['cases'].min(), (df['cases'].min() + df['cases'].max()) / 2, df['cases'].max()]
-    st.write("Color Scale: ", color_legend)
-
-    # Increase the size of the figure
-    fig.update_layout(height=500, width=600)
-
     # Show the 3D scatter plot using st.plotly_chart
     st.plotly_chart(fig)
-
-
 
 
 

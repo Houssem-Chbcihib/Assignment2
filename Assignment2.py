@@ -26,6 +26,8 @@ st.title("COVID-19 Data Visualization App")
 #Disable Python Notification
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+
+
 if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")
 
@@ -33,7 +35,7 @@ if chart_type == "3D Scatter Plot":
     threshold = st.slider("Select a Cases Threshold", min_value=0, max_value=5000, value=0)
     filtered_data = df[df['cases'] >= threshold]
 
-    # Create an interactive 3D scatter plot using Plotly Express
+    # Create an interactive 3D scatter plot using Plotly Express with custom settings
     fig = px.scatter_3d(
         filtered_data, x='month', y='day', z='cases',
         color='cases', opacity=0.7,
@@ -41,7 +43,25 @@ if chart_type == "3D Scatter Plot":
         title=f'3D Scatter Plot of COVID-19 Cases in Tunisia (2020) (Cases >= {threshold})'
     )
 
-    # Show the 3D scatter plot
+    # Customize the figure's appearance
+    fig.update_layout(
+        scene=dict(
+            xaxis_title='Month',
+            yaxis_title='Day',
+            zaxis_title='Cases',
+            bgcolor='white'  # Set background color to white
+        ),
+        coloraxis=dict(
+            colorscale='Viridis',  # Use the Viridis color scale (green to red)
+            cmin=df['cases'].min(),  # Set the minimum value for color mapping
+            cmax=df['cases'].max()   # Set the maximum value for color mapping
+        )
+    )
+
+    # Increase the size of the figure
+    fig.update_layout(height=800, width=1000)
+
+    # Show the 3D scatter plot using st.plotly_chart
     st.plotly_chart(fig)
 
 

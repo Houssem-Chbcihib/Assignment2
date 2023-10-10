@@ -30,7 +30,7 @@ if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")
 
     # Create a filter for data points with cases above or equal to a certain threshold
-    threshold = st.slider("Select a Cases Threshold", min_value=0, max_value=5000, value=0)
+    threshold = st.slider("Select a Cases Threshold", min_value=0, max_value=6000, value=0)
     filtered_data = df[df['cases'] >= threshold]
 
     # Create an interactive 3D scatter plot using Plotly Express with custom settings
@@ -59,18 +59,14 @@ if chart_type == "3D Scatter Plot":
         )
     )
 
-    # Create a separate legend indicating the color scale and values
-    color_legend = [0, 3000, 6000]
-    st.write("Color Scale (Cases): ", color_legend)
-
-    # Text under the graph
-    st.write("We can see that the daily cases up until month 8 were constant, but it started increasing and varying. This has to do with the gradual lift of the lockdown that happened around May in Tunisia.")
-
     # Increase the size of the figure
-    fig.update_layout(height=500, width=600)
+    fig.update_layout(height=600, width=800)
 
     # Show the 3D scatter plot using st.plotly_chart
     st.plotly_chart(fig)
+
+    # Text under the graph
+    st.write("We can see that the daily cases up until month 8 were constant, but it started increasing and varying. This has to do with the gradual lift of the lockdown that happened around May in Tunisia.")
 
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
@@ -98,10 +94,7 @@ elif chart_type == "Line Chart":
     plt.title('Monthly COVID-19 Cases and Deaths in Tunisia (2020)')
     plt.legend()
     plt.grid(True)
-    plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
+    plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val))
 
-    st.write("Text under the Line Chart.")
-    st.write("You can add descriptive text here.")
-
-    st.pyplot()
-
+    # Text under the graph
+    st.write("You can add descriptive text under the Line Chart.")

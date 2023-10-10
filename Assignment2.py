@@ -41,8 +41,24 @@ if chart_type == "3D Scatter Plot":
         title=f'3D Scatter Plot of COVID-19 Cases in Tunisia (2020) (Cases >= {threshold})'
     )
 
+    # Customize the layout of the 3D scatter plot
+    fig.update_traces(marker=dict(size=5, opacity=0.7),
+                      selector=dict(mode='markers'))
+
+    fig.update_layout(
+        scene=dict(
+            xaxis_title='Month',
+            yaxis_title='Day',
+            zaxis_title='Cases'
+        ),
+        scene_bgcolor='white',  # Set background color to white
+        legend_title_text='Cases',  # Add legend title
+        coloraxis_colorbar=dict(title='Cases', tickvals=[filtered_data['cases'].min(), filtered_data['cases'].max()], ticktext=['Low', 'High']),
+    )
+
     # Show the 3D scatter plot
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)  # Use container width for larger chart
+
 
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")

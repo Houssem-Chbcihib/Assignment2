@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import plotly.express as px
 from mpl_toolkits.mplot3d import Axes3D  # Import Axes3D from mpl_toolkits.mplot3d
 from matplotlib.ticker import FuncFormatter
 
@@ -32,40 +33,23 @@ if chart_type == "3D Scatter Plot":
     threshold = st.slider("Select a Cases Threshold", min_value=0, max_value=5000, value=0)
     filtered_data = df[df['cases'] >= threshold]
 
-    # Create a 3D scatter plot using Matplotlib
-    fig = plt.figure(figsize=(10, 8))
-    ax = fig.add_subplot(111, projection='3d')
+    # Create an interactive 3D scatter plot using Plotly
+    fig = px.scatter_3d(
+        filtered_data,
+        x='month',
+        y='day',
+        z='cases',
+        color='cases',
+        size='cases',
+        labels={'cases': 'Cases'},
+        title=f'3D Scatter Plot of COVID-19 Cases in Tunisia (2020) (Cases >= {threshold})'
+    )
 
-    # Extract data
-    x = filtered_data['month']
-    y = filtered_data['day']
-    z = filtered_data['cases']
-
-    # Create the scatter plot
-    scatter = ax.scatter(x, y, z, c=z, cmap='viridis', marker='o', s=50)
-
-    # Add labels and title
-    ax.set_xlabel('Month')
-    ax.set_ylabel('Day')
-    ax.set_zlabel('Cases')
-    ax.set_title(f'3D Scatter Plot of COVID-19 Cases in Tunisia (2020) (Cases >= {threshold})')
-
-    # Create a color scale legend
-    cbar = fig.colorbar(scatter, ax=ax)
-    cbar.set_label('Cases', rotation=270, labelpad=20)
-
-    # Format axis labels as integers
-    ax.xaxis.set_major_formatter(FuncFormatter(lambda val, _: int(val)))
-    ax.yaxis.set_major_formatter(FuncFormatter(lambda val, _: int(val)))
-    ax.zaxis.set_major_formatter(FuncFormatter(lambda val, _: int(val)))
-
-    # Set fixed limits for axes to prevent zooming in
-    ax.set_xlim(left=df['month'].min(), right=df['month'].max())
-    ax.set_ylim(bottom=df['day'].min(), top=df['day'].max())
-    ax.set_zlim(bottom=df['cases'].min(), top=df['cases'].max())
+    # Customize axis labels
+    fig.update_layout(scene=dict(xaxis_title='Month', yaxis_title='Day', zaxis_title='Cases'))
 
     # Show the 3D scatter plot
-    st.pyplot(fig)
+    st.plotly_chart(fig)
 
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")

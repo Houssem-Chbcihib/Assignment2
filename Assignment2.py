@@ -21,7 +21,7 @@ st.sidebar.image("https://www.worldbank.org/content/dam/photos/780x439/2017/apr-
 st.sidebar.image("https://www.amnesty.ie/wp-content/uploads/2020/04/www.amnesty.org180tunis02gettyimages-1209367433.jpg", use_column_width=True)
 
 # Main content
-st.title("COVID-19 Data Visualization App")
+st.title("COVID-19 Data Visualization App for Tunisia: Capturing COVID Data in 2020")
 
 #Disable Python Notification
 st.set_option('deprecation.showPyplotGlobalUse', False)

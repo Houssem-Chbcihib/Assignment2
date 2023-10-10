@@ -68,23 +68,10 @@ if chart_type == "3D Scatter Plot":
     )
 
     # Increase the size of the figure
-    fig.update_layout(height=600, width=600)
+    fig.update_layout(height=400, width=400)
 
     # Show the 3D scatter plot using st.plotly_chart
     st.plotly_chart(fig)
-    # Content under the graph
-    st.subheader("Data Insights")
-    st.markdown("This 3D scatter plot provides a visual representation of COVID-19 cases in Tunisia throughout the year 2020.")
-    st.markdown("The color of data points represents the number of cases, with a green-to-red scale.")
-    st.markdown("You can adjust the filter threshold to focus on cases above a certain level.")
-    st.markdown("Explore the interactive features to gain insights from the data.")
-    st.markdown("We can see that the daily cases up until month 8 were constant, but they started increasing and varying. This has to do with the gradual lift of lockdown that happened around May in Tunisia.")
-    
-    st.subheader("Data Source")
-    st.write("Data source: [GitHub Repository](https://github.com/Houssem-Chbcihib/Assignment2/main/Coronavirus_Tunisia.csv)")
-
-
-
 
 
 

@@ -49,10 +49,13 @@ if chart_type == "3D Scatter Plot":
             xaxis_title='Month',
             yaxis_title='Day',
             zaxis_title='Cases',
-            bgcolor='white'  # Set background color to white
+            bgcolor='white',  # Set background color to white
+            xaxis=dict(title=dict(text='Month', font=dict(color='black'))),  # Black title for X-axis
+            yaxis=dict(title=dict(text='Day', font=dict(color='black'))),    # Black title for Y-axis
+            zaxis=dict(title=dict(text='Cases', font=dict(color='black')))    # Black title for Z-axis
         ),
         coloraxis=dict(
-            colorscale='Viridis',  # Use the Viridis color scale (green to red)
+            colorscale='RdYlGn',  # Use the RdYlGn color scale (green to red)
             cmin=df['cases'].min(),  # Set the minimum value for color mapping
             cmax=df['cases'].max()   # Set the maximum value for color mapping
         )

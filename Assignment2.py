@@ -65,43 +65,11 @@ if chart_type == "3D Scatter Plot":
     # Text under the 3D Scatter Plot
     st.markdown("<hr style='border:2px solid black'>", unsafe_allow_html=True)
     st.markdown("<h3 style='color: #1f77b4;'>Description:</h3>", unsafe_allow_html=True)
+    st.markdown("<ul style='color: #1f77b4; list-style-type: disc;'>", unsafe_allow_html=True)
+    st.markdown("<li>Animate bullet point 1</li>", unsafe_allow_html=True)
+    st.markdown("<li>Animate bullet point 2</li>", unsafe_allow_html=True)
+    st.markdown("<li>Animate bullet point 3</li>", unsafe_allow_html=True)
+    st.markdown("</ul>", unsafe_allow_html=True)
     st.markdown("<p style='color: #1f77b4;'>This 3D scatter plot illustrates the distribution of COVID-19 cases in Tunisia during 2020.</p>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #1f77b4;'>The color scale represents case numbers, with red indicating higher counts.</p>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #1f77b4;'>We observe a significant increase in cases from month 8 onwards, potentially due to policy or behavior changes.</p>", unsafe_allow_html=True)
-
-elif chart_type == "Line Chart":
-    st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
-
-    # Allow users to select data series to display
-    selected_data = st.multiselect("Select Data Series", ["Cases", "Deaths"], default=["Cases", "Deaths"])
-
-    if "Cases" in selected_data:
-        st.subheader("Cases")
-        monthly_data_cases = df.groupby('month')['cases'].sum().tolist()
-    if "Deaths" in selected_data:
-        st.subheader("Deaths")
-        monthly_data_deaths = df.groupby('month')['deaths'].sum().tolist()
-
-    plt.figure(figsize=(12, 6))
-
-    if "Cases" in selected_data:
-        plt.plot(df['month'].unique(), monthly_data_cases, label='Cases', marker='o', color='blue')
-
-    if "Deaths" in selected_data:
-        plt.plot(df['month'].unique(), monthly_data_deaths, label='Deaths', marker='o', color='red')
-
-    plt.xlabel('Month')
-    plt.ylabel('Count')
-    plt.title('Monthly COVID-19 Cases and Deaths in Tunisia (2020)')
-    plt.legend()
-    plt.grid(True)
-    plt.gca().get_yaxis().set_major_formatter(FuncFormatter(lambda val, _: int(val)))
-
-    st.pyplot()
-
-    # Text under the Line Chart
-    st.markdown("<hr style='border:2px solid black'>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: #d62728;'>Description:</h3>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #d62728;'>This line chart presents the monthly count of COVID-19 cases and deaths in Tunisia for the year 2020.</p>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #d62728;'>Users can select specific data series (Cases, Deaths) to visualize.</p>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #d62728;'>The chart offers insights into case and death trends over time.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #1f77b4;'>The color scale represents case numbers, with <span style='color: red;'>red</span> indicating higher counts.</p>", unsafe_allow_html=True)
+    st.mark

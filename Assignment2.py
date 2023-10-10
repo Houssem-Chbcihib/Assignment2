@@ -2,22 +2,19 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
-from mpl_toolkits.mplot3d import Axes3D  # Import Axes3D from mpl_toolkits.mplot3d
+from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.ticker import FuncFormatter
 
-# I extracted the URL of a dataset that I uploaded in Github repository
-dataset_url = "https://raw.githubusercontent.com/Houssem-Chbcihib/Assignment2/main/Coronavirus_Tunisia.csv"
 # Load the dataset from the URL
+dataset_url = "https://raw.githubusercontent.com/Houssem-Chbcihib/Assignment2/main/Coronavirus_Tunisia.csv"
 df = pd.read_csv(dataset_url)
 
 # Streamlit Sidebar Widgets
 st.sidebar.title("COVID-19 Data Visualization")
 chart_type = st.sidebar.selectbox("Select Chart Type", ["3D Scatter Plot", "Line Chart"])
 
-# Insert the image in the sidebar
+# Insert images in the sidebar
 st.sidebar.image("https://www.worldbank.org/content/dam/photos/780x439/2017/apr-4/Tunisia-COVID19-780.jpg", use_column_width=True)
-
-# Insert the image in the sidebar
 st.sidebar.image("https://www.amnesty.ie/wp-content/uploads/2020/04/www.amnesty.org180tunis02gettyimages-1209367433.jpg", use_column_width=True)
 
 # Main content
@@ -25,6 +22,7 @@ st.title("COVID-19 Data Visualization App")
 
 # Disable Python Notification
 st.set_option('deprecation.showPyplotGlobalUse', False)
+
 if chart_type == "3D Scatter Plot":
     st.header("3D Scatter Plot of COVID-19 Cases in Tunisia (2020)")
 
@@ -48,24 +46,14 @@ if chart_type == "3D Scatter Plot":
             zaxis_title='<b>Cases</b>',  # Bold title for Z-axis
             bgcolor='white',  # Set background color to white
             xaxis=dict(title=dict(text='Month', font=dict(color='black')), tickfont=dict(color='black')),  # Black title and numbers for X-axis
-            yaxis=dict(title=dict(text='Day', font=dict(color='black')), tickfont=dict(color='black')),    # Black title and numbers for Y-axis
-            zaxis=dict(title=dict(text='Cases', font=dict(color='black')), tickfont=dict(color='black'))    # Black title and numbers for Z-axis
+            yaxis=dict(title=dict(text='Day', font=dict(color='black')), tickfont=dict(color='black')),  # Black title and numbers for Y-axis
+            zaxis=dict(title=dict(text='Cases', font=dict(color='black')), tickfont=dict(color='black'))  # Black title and numbers for Z-axis
         ),
         coloraxis=dict(
             colorscale='RdYlGn_r',  # Use the reversed RdYlGn color scale (green to red)
             cmin=0,  # Set the minimum value for color mapping
             cmax=6000  # Set the maximum value for color mapping
         )
-    )
-
-    # Create a separate legend indicating the color scale and values
-    color_legend = [0, 3000, 6000]
-    st.write("**Color Scale**:")
-    st.markdown(
-        "- <span style='color:red; text-decoration: underline;'>High Cases</span>"
-        "<br>- Moderate Cases"
-        "<br>- <span style='color:green;'>Low Cases</span>",
-        unsafe_allow_html=True
     )
 
     # Increase the size of the figure
@@ -75,17 +63,16 @@ if chart_type == "3D Scatter Plot":
     st.plotly_chart(fig)
 
     # Text under the 3D Scatter Plot
-    st.markdown("<h3>Description:</h3>", unsafe_allow_html=True)
-    st.markdown("<ul>"
-                "<li>Visualizes the distribution of COVID-19 cases in Tunisia in 2020.</li>"
-                "<li><span style='color:red;'>Red color represents higher cases.</span></li>"
-                "<li>Notice the increase in cases from month 8, potentially due to policy changes.</li>"
-                "</ul>", unsafe_allow_html=True)
+    st.markdown("<hr style='border:2px solid black'>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: #1f77b4;'>Description:</h3>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #1f77b4;'>This 3D scatter plot illustrates the distribution of COVID-19 cases in Tunisia during 2020.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #1f77b4;'>The color scale represents case numbers, with red indicating higher counts.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #1f77b4;'>We observe a significant increase in cases from month 8 onwards, potentially due to policy or behavior changes.</p>", unsafe_allow_html=True)
 
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
 
-    # Allow users to select which data series to display
+    # Allow users to select data series to display
     selected_data = st.multiselect("Select Data Series", ["Cases", "Deaths"], default=["Cases", "Deaths"])
 
     if "Cases" in selected_data:
@@ -113,9 +100,8 @@ elif chart_type == "Line Chart":
     st.pyplot()
 
     # Text under the Line Chart
-    st.markdown("<h3>Description:</h3>", unsafe_allow_html=True)
-    st.markdown("<ul>"
-                "<li>Displays the monthly count of COVID-19 cases and deaths in Tunisia for 2020.</li>"
-                "<li>Users can select specific data series (Cases, Deaths) for visualization.</li>"
-                "<li>Provides insights into the trends of cases and deaths over time.</li>"
-                "</ul>", unsafe_allow_html=True)
+    st.markdown("<hr style='border:2px solid black'>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: #d62728;'>Description:</h3>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #d62728;'>This line chart presents the monthly count of COVID-19 cases and deaths in Tunisia for the year 2020.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #d62728;'>Users can select specific data series (Cases, Deaths) to visualize.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #d62728;'>The chart offers insights into case and death trends over time.</p>", unsafe_allow_html=True)

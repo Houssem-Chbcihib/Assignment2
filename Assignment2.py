@@ -102,8 +102,8 @@ elif chart_type == "Line Chart":
     st.pyplot()
 
     # Text under the Line Chart
-    st.markdown("### <u>Description:</u>")
-    st.markdown("This line chart illustrates the monthly count of COVID-19 <span style='color: blue;'>cases</span> and <span style='color: red;'>deaths</span> in Tunisia for the year 2020.")
-    st.markdown("Users can select specific data series (Cases, Deaths) to visualize.")
+    st.markdown("### Description:")
+    st.markdown("This line chart illustrates the monthly count of COVID-19 cases and deaths in Tunisia for the year 2020.")
+    st.markdown("Users can select specific data series (<span style='color: blue;'>Cases</span>, <span style='color: red;'>Deaths</span>) to visualize.")
     st.markdown("The chart provides insights into the trends of cases and deaths over time.")
 

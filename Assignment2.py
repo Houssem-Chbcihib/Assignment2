@@ -69,6 +69,7 @@ if chart_type == "3D Scatter Plot":
 
 
 
+
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
 

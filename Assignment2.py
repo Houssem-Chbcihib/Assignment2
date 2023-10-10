@@ -66,9 +66,9 @@ if chart_type == "3D Scatter Plot":
     st.plotly_chart(fig)
 
     # Text under the 3D Scatter Plot
-    st.markdown("### Description:")
+    st.markdown("### <u>Description:</u>")
     st.markdown("This 3D scatter plot displays the distribution of COVID-19 cases in Tunisia in 2020.")
-    st.markdown("The color scale represents the number of cases, with red indicating higher cases.")
+    st.markdown("The color scale represents the number of cases,  with <span style='color: green;'>green</span> indicating lower cases and <span style='color: red;'>red</span> indicating higher cases.")
     st.markdown("We can observe a noticeable increase in cases from month 8 onwards, possibly due to changes in policies or public behavior.")
 
 elif chart_type == "Line Chart":
@@ -102,7 +102,8 @@ elif chart_type == "Line Chart":
     st.pyplot()
 
     # Text under the Line Chart
-    st.markdown("### Description:")
-    st.markdown("This line chart illustrates the monthly count of COVID-19 cases and deaths in Tunisia for the year 2020.")
+    st.markdown("### <u>Description:</u>")
+    st.markdown("This line chart illustrates the monthly count of COVID-19 <span style='color: blue;'>cases</span> and <span style='color: red;'>deaths</span> in Tunisia for the year 2020.")
     st.markdown("Users can select specific data series (Cases, Deaths) to visualize.")
     st.markdown("The chart provides insights into the trends of cases and deaths over time.")
+

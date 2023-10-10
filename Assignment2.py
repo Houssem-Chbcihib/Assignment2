@@ -33,20 +33,13 @@ if chart_type == "3D Scatter Plot":
     threshold = st.slider("Select a Cases Threshold", min_value=0, max_value=5000, value=0)
     filtered_data = df[df['cases'] >= threshold]
 
-    # Create an interactive 3D scatter plot using Plotly
+    # Create an interactive 3D scatter plot using Plotly Express
     fig = px.scatter_3d(
-        filtered_data,
-        x='month',
-        y='day',
-        z='cases',
-        color='cases',
-        size='cases',
-        labels={'cases': 'Cases'},
+        filtered_data, x='month', y='day', z='cases',
+        color='cases', opacity=0.7,
+        labels={'month': 'Month', 'day': 'Day', 'cases': 'Cases'},
         title=f'3D Scatter Plot of COVID-19 Cases in Tunisia (2020) (Cases >= {threshold})'
     )
-
-    # Customize axis labels
-    fig.update_layout(scene=dict(xaxis_title='Month', yaxis_title='Day', zaxis_title='Cases'))
 
     # Show the 3D scatter plot
     st.plotly_chart(fig)

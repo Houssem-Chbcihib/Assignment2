@@ -24,7 +24,7 @@ st.sidebar.image("https://www.amnesty.ie/wp-content/uploads/2020/04/www.amnesty.
 st.title("COVID-19 Data Visualization App for Tunisia: Capturing COVID Data in 2020")
 
 # Add data source information
-st.markdown("Data Source: This data was obtained from Kaggle and later uploaded to GitHub.")
+st.markdown(f"Data Source: This data was obtained from [GitHub]({dataset_url}).")
 st.markdown("The dataset contains recorded daily COVID-19 cases in Tunisia for the year 2020.")
 
 # Disable Python Notification

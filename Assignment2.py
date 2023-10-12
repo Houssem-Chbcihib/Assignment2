@@ -1,3 +1,4 @@
+import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
@@ -110,4 +111,3 @@ elif chart_type == "Line Chart":
     st.markdown("This line chart illustrates the monthly count of COVID-19 cases and deaths in Tunisia for the year 2020.", unsafe_allow_html=True)
     st.markdown("Users can select specific data series (<span style='color: blue;'>Cases</span>, <span style='color: red;'>Deaths</span>) to visualize.", unsafe_allow_html=True)
     st.markdown("The chart provides insights into the trends of cases and deaths over time, as it allows the user to see the deaths and cases lines independently, and then visualize both and be able to contrast them to observe the differences in recorded cases and deaths. We can notice that for the first 7 months, the number of cases are higher than the number of deaths, but then the cases and death graphs overlap with each other after month 7, indicating that the recorded cases are also recorded deaths.", unsafe_allow_html=True)
-    

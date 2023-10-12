@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
-from mpl_toolkits.mplot3d import Axes3D  # Import Axes3D from mpl_toolkits.mplot3d
+from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.ticker import FuncFormatter
 
 # I extracted the URL of a dataset that I uploaded in Github repository
@@ -23,7 +23,11 @@ st.sidebar.image("https://www.amnesty.ie/wp-content/uploads/2020/04/www.amnesty.
 # Main content
 st.title("COVID-19 Data Visualization App for Tunisia: Capturing COVID Data in 2020")
 
-#Disable Python Notification
+# Add data source information
+st.markdown("Data Source: This data was obtained from Kaggle and later uploaded to GitHub.")
+st.markdown("The dataset contains recorded daily COVID-19 cases in Tunisia for the year 2020.")
+
+# Disable Python Notification
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 if chart_type == "3D Scatter Plot":
@@ -67,10 +71,9 @@ if chart_type == "3D Scatter Plot":
 
     # Text under the 3D Scatter Plot
     st.markdown("### <u>Description:</u>", unsafe_allow_html=True)
-    st.markdown("This 3D scatter plot displays the distribution of COVID-19 cases in Tunisia in 2020. you can manipulate the graph by choosing data to observe using the filter above. For example, if you choose a value of 4000, the graph will only plot data points with corresponding cases equal or higher than 5000", unsafe_allow_html=True)
+    st.markdown("This 3D scatter plot displays the distribution of COVID-19 cases in Tunisia in 2020. You can manipulate the graph by choosing data to observe using the filter above. For example, if you choose a value of 4000, the graph will only plot data points with corresponding cases equal to or higher than 4000.", unsafe_allow_html=True)
     st.markdown("The color scale represents the number of cases, with <span style='color: green;'>green</span> indicating lower cases and <span style='color: red;'>red</span> indicating higher cases.", unsafe_allow_html=True)
-    st.markdown("We can observe a noticeable increase in cases from month 8 onwards. Before that, we can see horizontal lines indicating that the daily recorded cases are somewhat constant. This might be due to the Tunisian goverment decision to initiate gradual lifting of lockdown.", unsafe_allow_html=True)
-
+    st.markdown("We can observe a noticeable increase in cases from month 8 onwards. Before that, we can see horizontal lines indicating that the daily recorded cases are somewhat constant. This might be due to the Tunisian government's decision to initiate the gradual lifting of lockdown.", unsafe_allow_html=True)
 
 elif chart_type == "Line Chart":
     st.header("Monthly COVID-19 Cases and Deaths in Tunisia (2020)")
@@ -107,5 +110,3 @@ elif chart_type == "Line Chart":
     st.markdown("This line chart illustrates the monthly count of COVID-19 cases and deaths in Tunisia for the year 2020.", unsafe_allow_html=True)
     st.markdown("Users can select specific data series (<span style='color: blue;'>Cases</span>, <span style='color: red;'>Deaths</span>) to visualize.", unsafe_allow_html=True)
     st.markdown("The chart provides insights into the trends of cases and deaths over time, as it allows the user to see the deaths and cases lines independently, and then visualize both and be able to contrast them to observe the differences in recorded cases and deaths.", unsafe_allow_html=True)
-
-

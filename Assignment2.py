@@ -26,7 +26,7 @@ st.title("COVID-19 Data Visualization App for Tunisia: Capturing COVID Data in 2
 # Add data source information
 # Add data source information as plain text
 st.markdown(f"Data Source: {dataset_url}")
-st.markdown("The dataset contains recorded daily COVID-19 cases in Tunisia for the year 2020.")
+st.markdown("The dataset contains recorded daily COVID-19 cases in Tunisia for the year 2020. It was obtained from Kaggle and uploaded to Github")
 
 # Disable Python Notification
 st.set_option('deprecation.showPyplotGlobalUse', False)
